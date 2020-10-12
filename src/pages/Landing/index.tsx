@@ -18,7 +18,6 @@ const Landing: React.FC = () => {
           <strong>Serra</strong>
           <span>Espírito Santo</span>
         </Location>
-
         <EnterApp to="/app">
           <FiArrowRight size={26} color="rgba(0,0,0,0.6)" />
         </EnterApp>
