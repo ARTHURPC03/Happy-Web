@@ -1,14 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
 import { FiPlus } from 'react-icons/fi'
 import { Map, TileLayer } from 'react-leaflet'
+import { ThemeContext } from 'styled-components'
 import { PageMap, CreateOrphanage } from './styles'
-
 import mapMarkerImg from '../../images/mapMarker.svg'
 
 import 'leaflet/dist/leaflet.css'
 
 const OrphanagesMap: React.FC = () => {
+  const { title } = useContext(ThemeContext)
   return (
     <PageMap>
       <aside>
@@ -31,9 +32,16 @@ const OrphanagesMap: React.FC = () => {
         style={{ width: '100%', height: '100%' }}
       >
         {/* <TileLayer url="https://a.tile.openstreetmap.org/{z}/{x}/{y}.png" /> */}
-        <TileLayer
-          url={`https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`}
-        />
+
+        {title === 'dark' ? (
+          <TileLayer
+            url={`https://api.mapbox.com/styles/v1/mapbox/dark-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`}
+          />
+        ) : (
+          <TileLayer
+            url={`https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`}
+          />
+        )}
       </Map>
 
       <CreateOrphanage to="">

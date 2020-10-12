@@ -35,6 +35,7 @@
       "import/prefer-default-export": "off",
       "no-use-before-define": "off",
       "prettier/prettier": "error",
+      "@typescript-eslint/explicit-module-boundary-types": "off",
       "semi": "off",
       "import/extensions": [
         "error",

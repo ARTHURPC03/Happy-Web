@@ -10,7 +10,7 @@ export const PageMap = styled.div`
 
   aside {
     width: 440px;
-    background: linear-gradient(329.54deg, #29b6d1 0%, #00c7c7 100%);
+    background: ${props => props.theme.colors.backgroundLanding};
     padding: 80px;
 
     display: flex;
@@ -35,6 +35,26 @@ export const PageMap = styled.div`
     flex-direction: column;
 
     line-height: 24px;
+
+    animation: myFooter 0.25s linear 1s infinite alternate;
+
+    @keyframes myFooter {
+      0% {
+        margin-left: 0;
+      }
+      25% {
+        margin-left: 2.5px;
+      }
+      50% {
+        margin-left: 0;
+      }
+      75% {
+        margin-left: -2.5px;
+      }
+      100% {
+        margin-left: 0;
+      }
+    }
   }
 
   aside footer strong {
@@ -43,6 +63,20 @@ export const PageMap = styled.div`
 
   .leaflet-container {
     z-index: 5;
+  }
+
+  aside header img {
+    animation: myLogo 1.5s linear 0s infinite alternate;
+
+    @keyframes myLogo {
+      from {
+        transform: translateX(0px) rotate(360deg) scale(2);
+      }
+
+      to {
+        transform: translateX(180px) rotate(0deg);
+      }
+    }
   }
 `
 export const CreateOrphanage = styled(Link)`
@@ -62,8 +96,19 @@ export const CreateOrphanage = styled(Link)`
   align-items: center;
 
   transition: background-color 0.2s;
-
   &:hover {
     background: #17d6eb;
+  }
+
+  animation: myCreateOrphanage 1.5s linear 0s infinite alternate;
+
+  @keyframes myCreateOrphanage {
+    from {
+      transform: rotate(360deg) scale(1.5);
+    }
+
+    to {
+      transform: rotate(0deg);
+    }
   }
 `

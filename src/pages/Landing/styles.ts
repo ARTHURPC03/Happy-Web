@@ -1,11 +1,10 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import img from '../../images/landing.svg'
 
 export const PageLanding = styled.div`
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(329.54deg, #29b6d1 0%, #00c7c7 100%);
+  background: ${props => props.theme.colors.backgroundLanding};
 
   display: flex;
   justify-content: center;
@@ -25,10 +24,28 @@ export const ContentWrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
 
-  background: url(${img}) no-repeat 80% center;
+  background: url(${props => props.theme.landing}) no-repeat 80% center;
 
   main {
     max-width: 350px;
+    animation: mainAnimation 5s linear 0s infinite alternate;
+  }
+  @keyframes mainAnimation {
+    0% {
+      color: #fff;
+    }
+    25% {
+      color: #d6d6d6;
+    }
+    50% {
+      color: #828282;
+    }
+    75% {
+      color: #444444;
+    }
+    100% {
+      color: #000000;
+    }
   }
 
   main h1 {
@@ -41,6 +58,28 @@ export const ContentWrapper = styled.div`
     margin-top: 40px;
     font-size: 24px;
     line-height: 34px;
+  }
+
+  img {
+    transition: transform 0.2s;
+    animation: myFirst 0.8s linear 0s infinite alternate;
+  }
+  @keyframes myFirst {
+    0% {
+      transform: translateY(100px);
+    }
+    25% {
+      transform: translateY(75px);
+    }
+    50% {
+      transform: translateY(50px);
+    }
+    75% {
+      transform: translateY(25px);
+    }
+    100% {
+      transform: scale(1.5);
+    }
   }
 `
 
@@ -56,6 +95,11 @@ export const Location = styled.div`
   flex-direction: column;
 
   text-align: right;
+  transition: transform 0.2s;
+
+  &:hover {
+    transform: scale(1.5);
+  }
 
   strong {
     font-weight: 800;
@@ -77,8 +121,18 @@ export const EnterApp = styled(Link)`
   justify-content: center;
 
   transition: background-color 0.2s;
-
+  transition: transform 0.2s;
+  animation: scaleButton 1s infinite alternate;
   &:hover {
     background: #96feff;
+  }
+
+  @keyframes scaleButton {
+    from {
+      transform: scale(1.5);
+    }
+    to {
+      transform: scale(1);
+    }
   }
 `
