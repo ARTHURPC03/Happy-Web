@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 import GlobalStyle from './styles/global'
 
@@ -9,8 +9,8 @@ function App() {
         <h1>Hello World</h1>
       </div>
       <GlobalStyle />
-     </>
-  );
+    </>
+  )
 }
 
-export default App;
+export default App
