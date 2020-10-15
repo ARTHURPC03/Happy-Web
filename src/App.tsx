@@ -8,6 +8,8 @@ import ThemeSwitcher from './components/ThemeSwitcher'
 import light from './styles/themes/light'
 import dark from './styles/themes/dark'
 
+import 'leaflet/dist/leaflet.css'
+
 function App() {
   const [theme, setTheme] = usePersistedState<DefaultTheme>('theme', dark)
 

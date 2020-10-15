@@ -3,20 +3,12 @@ import React, { useContext } from 'react'
 import { FiPlus, FiArrowRight } from 'react-icons/fi'
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet'
 import { ThemeContext } from 'styled-components'
-import Leaflet from 'leaflet'
 import { Link } from 'react-router-dom'
 import mapMarkerImg from '../../images/mapMarker.svg'
 
 import { PageMap, CreateOrphanage } from './styles'
-import 'leaflet/dist/leaflet.css'
 
-const mapIcon = Leaflet.icon({
-  iconUrl: mapMarkerImg,
-
-  iconSize: [58, 68],
-  iconAnchor: [29, 68],
-  popupAnchor: [170, 2],
-})
+import mapIcon from '../../utils/mapIcon'
 
 const OrphanagesMap: React.FC = () => {
   const { title } = useContext(ThemeContext)
@@ -61,14 +53,14 @@ const OrphanagesMap: React.FC = () => {
             className="map-popup"
           >
             Lar das meninas
-            <Link to="/">
+            <Link to="/orphanages/1">
               <FiArrowRight size={20} color="#FFF" />
             </Link>
           </Popup>
         </Marker>
       </Map>
 
-      <CreateOrphanage to="">
+      <CreateOrphanage to="/orphanages/create">
         <FiPlus size={32} color="#fff" />
       </CreateOrphanage>
     </PageMap>
