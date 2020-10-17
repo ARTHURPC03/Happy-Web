@@ -20,6 +20,12 @@ export const Container = styled.div`
     overflow: hidden;
   }
 
+  form.create-orphanage-form .leaflet-container {
+    margin-bottom: 40px;
+    border: 1px solid #d3e2e5;
+    border-radius: 20px;
+  }
+
   form.create-orphanage-form fieldset {
     border: 0;
   }

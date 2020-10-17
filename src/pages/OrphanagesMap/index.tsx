@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 
 import { FiPlus, FiArrowRight } from 'react-icons/fi'
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet'
@@ -9,8 +9,24 @@ import mapMarkerImg from '../../images/mapMarker.svg'
 import { PageMap, CreateOrphanage } from './styles'
 
 import mapIcon from '../../utils/mapIcon'
+import api from '../../services/api'
+
+interface Orphanage {
+  id: number
+  latitude: number
+  longitude: number
+  name: string
+}
 
 const OrphanagesMap: React.FC = () => {
+  const [orphanages, setOrphanages] = useState<Orphanage[]>([])
+
+  useEffect(() => {
+    api.get('orphanages').then(response => {
+      setOrphanages(response.data)
+    })
+  }, [])
+
   const { title } = useContext(ThemeContext)
   return (
     <PageMap>
@@ -45,19 +61,27 @@ const OrphanagesMap: React.FC = () => {
           />
         )}
 
-        <Marker icon={mapIcon} position={[-20.1291006, -40.3119974]}>
-          <Popup
-            closeButton={false}
-            minWidth={240}
-            maxWidth={240}
-            className="map-popup"
-          >
-            Lar das meninas
-            <Link to="/orphanages/1">
-              <FiArrowRight size={20} color="#FFF" />
-            </Link>
-          </Popup>
-        </Marker>
+        {orphanages.map(orphanage => {
+          return (
+            <Marker
+              icon={mapIcon}
+              position={[orphanage.latitude, orphanage.longitude]}
+              key={orphanage.id}
+            >
+              <Popup
+                closeButton={false}
+                minWidth={240}
+                maxWidth={240}
+                className="map-popup"
+              >
+                {orphanage.name}
+                <Link to={`/orphanages/${orphanage.id}`}>
+                  <FiArrowRight size={20} color="#FFF" />
+                </Link>
+              </Popup>
+            </Marker>
+          )
+        })}
       </Map>
 
       <CreateOrphanage to="/orphanages/create">

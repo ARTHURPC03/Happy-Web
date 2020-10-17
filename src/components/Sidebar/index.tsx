@@ -3,13 +3,13 @@ import { FiArrowLeft } from 'react-icons/fi'
 import { useHistory } from 'react-router-dom'
 
 import mapMarkerImg from '../../images/mapMarker.svg'
-// import { Container } from './styles';
+import { AppSidebar } from './styles'
 
 const Sidebar: React.FC = () => {
   const { goBack } = useHistory()
 
   return (
-    <aside>
+    <AppSidebar>
       <img src={mapMarkerImg} alt="Happy" />
 
       <footer>
@@ -17,7 +17,7 @@ const Sidebar: React.FC = () => {
           <FiArrowLeft size={24} color="#FFF" />
         </button>
       </footer>
-    </aside>
+    </AppSidebar>
   )
 }
 

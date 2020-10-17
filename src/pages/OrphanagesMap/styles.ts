@@ -95,6 +95,7 @@ export const PageMap = styled.div`
     justify-content: space-between;
     align-items: center;
   }
+
   .map-popup .leaflet-popup-content a {
     width: 40px;
     height: 40px;
